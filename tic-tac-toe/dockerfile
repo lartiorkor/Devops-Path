@@ -1,0 +1,11 @@
+FROM node
+
+COPY package.json /app/
+COPY src /app/
+COPY public /app/
+
+WORKDIR /app
+
+RUN npm install
+
+CMD [ "npm",  "start"]
