@@ -1,12 +1,12 @@
-FROM python:3.8-alpine
-
-COPY requirements.txt /app/
-COPY . /app/
+FROM python:3.8-bullseye
 
 WORKDIR /app
 
+COPY requirements.txt /app/
 RUN pip install -r requirements.txt
-RUN pip install django-prometheus
+
+COPY . /app/
+
 RUN python manage.py migrate
 
-CMD [ "python",  "manage.py", "runserver"]
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000"]
